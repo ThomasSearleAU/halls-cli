@@ -1,0 +1,21 @@
+{
+  "name": "halls-cli",
+  "version": "1.0.0",
+  "description": "![Halls](https://github.com/CHIMPMAN-CHIMP/HallwayChat/blob/main/images/HALLS_LOGO_LONG.png)",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thejtzone/halls-cli.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/thejtzone/halls-cli/issues"
+  },
+  "homepage": "https://github.com/thejtzone/halls-cli#readme"
+}
