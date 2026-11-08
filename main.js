@@ -1,4 +1,10 @@
-const Renderer = require('./renderer.js');
+const ConnectingStage = require('./stages/connecting.js');
 
-Renderer.clear();
-Renderer.logo();
+let stage = new ConnectingStage();
+
+async function run() {
+    while (true) {
+        stage = await stage.loop();
+        await new Promise(r => setTimeout(r, 100));
+    }
+}
