@@ -11,6 +11,9 @@ class Stage {
         Renderer.logo();
         console.log(`\n\n${message}`);
     }
+
+    processKey(input) {}
+    processMouseInput(input) {}
 }
 
 class ConfigReader {

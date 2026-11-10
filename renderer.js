@@ -40,20 +40,33 @@ class Renderer {
         static CLEAR_SCREEN = '\x1b[H\x1b[2J\x1b[3J';
         static CLEAR_LINE = '\x1b[2K\x1b[200D';
 
-        static SET_CURSOR = (x, y) => `\x1b[${y};${x}H`;
+        static Cursor = class {
+            static SET_CURSOR = (x, y) => `\x1b[${y};${x}H`;
         
-        static MOVE_CURSOR_UP = (n=1) => `\x1b[${n}A`;
-        static MOVE_CURSOR_DOWN = (n=1) => `\x1b[${n}B`;
-        static MOVE_CURSOR_RIGHT = (n=1) => `\x1b[${n}C`;
-        static MOVE_CURSOR_LEFT = (n=1) => `\x1b[${n}D`;
+            static MOVE_CURSOR_UP = (n=1) => `\x1b[${n}A`;
+            static MOVE_CURSOR_DOWN = (n=1) => `\x1b[${n}B`;
+            static MOVE_CURSOR_RIGHT = (n=1) => `\x1b[${n}C`;
+            static MOVE_CURSOR_LEFT = (n=1) => `\x1b[${n}D`;
 
-        static MOVE_CURSOR(x, y) {
-            let returnString = '';
-            if (x > 0) returnString += this.MOVE_CURSOR_RIGHT(x);
-            else if (x < 0) returnString += this.MOVE_CURSOR_LEFT(-x);
-            if (y < 0) returnString += this.MOVE_CURSOR_DOWN(y);
-            else if (y > 0) returnString += this.MOVE_CURSOR_UP(-y);
-            return returnString;
+            static MOVE_CURSOR(x, y) {
+                let returnString = '';
+                if (x > 0) returnString += this.MOVE_CURSOR_RIGHT(x);
+                else if (x < 0) returnString += this.MOVE_CURSOR_LEFT(-x);
+                if (y < 0) returnString += this.MOVE_CURSOR_DOWN(y);
+                else if (y > 0) returnString += this.MOVE_CURSOR_UP(-y);
+                return returnString;
+            }
+
+
+            static SAVE_CURSOR_POSITION = '\x1b[s';
+            static RESTORE_CURSOR_POSITION = '\x1b[u';
+
+            static HIDE_CURSOR = '\x1b[?25l';
+            static SHOW_CURSOR = '\x1b[?25h';
+
+            static GET_CURSOR_POSITION = '\x1b[6n';
+            static START_CURSOR_TRACKING = '\x1b[?1003h\x1b[?1006h';
+            static STOP_CURSOR_TRACKING = '\x1b[?1003l\x1b[?1006l';
         }
     }
 

@@ -29,6 +29,7 @@ class ConnectingStage extends Stage {
 
         console.log('\nConnected!');
         return new (require('./home.js'))();
+        // return new Stage();
     }
 }
 
