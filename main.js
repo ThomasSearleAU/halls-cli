@@ -4,9 +4,13 @@ const ConnectingStage = require('./stages/connecting.js');
 let stage = new ConnectingStage();
 
 async function run() {
-    while (true) {
-        stage = await stage.loop();
-        await new Promise(r => setTimeout(r, 33));
+    try {
+        while (true) {
+            stage = await stage.loop();
+            await new Promise(r => setTimeout(r, 33));
+        }
+    } catch (err) {
+        exitHandler({ error: err.message }, 1);
     }
 }
 
@@ -45,7 +49,7 @@ function exitHandler(options, exitCode) {
         Renderer.Colours.Cursor.STOP_CURSOR_TRACKING,
         Renderer.Colours.Cursor.SHOW_CURSOR
     );
-
+    if (options.error) console.log(`Err${exitCode}: ${options.error}`);
     process.stdin.setRawMode(false);
     process.exit();
 }
